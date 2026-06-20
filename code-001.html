@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>智慧物流與人機協作：重構現代供應鏈的未來藍圖</title>
+    <style>
+        :root {
+            --primary-blue: #1e293b;
+            --accent-orange: #c2593f;
+            --slate-gray: #475569;
+            --light-bg: #f8fafc;
+            --card-bg: #ffffff;
+            --border-color: #e2e8f0;
+            --text-dark: #0f172a;
+            --text-muted: #64748b;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans TC", sans-serif;
+            background-color: var(--light-bg);
+            color: var(--text-dark);
+            line-height: 1.7;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Hero Section */
+        header {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, #0f172a 100%);
+            color: white;
+            padding: 5rem 2rem;
+            text-align: center;
+            border-bottom: 5px solid var(--accent-orange);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        header .subtitle {
+            font-size: 1.25rem;
+            color: #94a3b8;
+            margin-bottom: 2rem;
+        }
+
+        header .meta {
+            font-size: 1rem;
+            color: #cbd5e1;
+            background: rgba(255, 255, 255, 0.1);
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+        }
+
+        /* Section Styling */
+        section {
+            margin: 4rem 0;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            color: var(--primary-blue);
+            margin-bottom: 2rem;
+            padding-left: 1rem;
+            border-left: 5px solid var(--accent-orange);
+        }
+
+        /* Grid Layouts */
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 2rem;
+        }
+
+        /* Card Styling */
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            transition: transform 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+        }
+
+        .card h3 {
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .card-accent {
+            border-top: 4px solid var(--accent-orange);
+        }
+
+        .card-blue {
+            border-top: 4px solid var(--primary-blue);
+        }
+
+        /* Stats Badge */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .stat-box {
+            background: var(--light-bg);
+            padding: 1rem;
+            border-radius: 6px;
+            text-align: center;
+            border: 1px solid var(--border-color);
+        }
+
+        .stat-value {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--accent-orange);
+            margin-bottom: 0.25rem;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--slate-gray);
+        }
+
+        /* Flowchart Simulation */
+        .flowchart {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        .flow-step {
+            background: var(--light-bg);
+            padding: 1rem;
+            border-radius: 6px;
+            border-left: 4px solid var(--slate-gray);
+            position: relative;
+        }
+
+        .flow-step::after {
+            content: "↓";
+            position: absolute;
+            bottom: -22px;
+            left: 30px;
+            color: var(--slate-gray);
+            font-weight: bold;
+            font-size: 1.2rem;
+            z-index: 1;
+        }
+
+        .flow-step:last-child::after {
+            content: "";
+        }
+
+        .flow-branch {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-top: 0.5rem;
+        }
+
+        .branch-box {
+            padding: 1rem;
+            border-radius: 6px;
+            font-size: 0.9rem;
+        }
+
+        .branch-yes {
+            background: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            color: #166534;
+        }
+
+        .branch-no {
+            background: #fff7ed;
+            border: 1px solid #ffedd5;
+            color: #9a3412;
+        }
+
+        /* 2x2 Matrix Styling */
+        .matrix-container {
+            display: grid;
+            grid-template-columns: auto 1fr 1fr;
+            grid-template-rows: auto 1fr 1fr;
+            gap: 1rem;
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        .matrix-label-y {
+            writing-mode: vertical-rl;
+            text-align: center;
+            font-weight: bold;
+            color: var(--slate-gray);
+            grid-row: 2 / span 2;
+            align-self: center;
+            justify-self: center;
+        }
+
+        .matrix-label-x {
+            text-align: center;
+            font-weight: bold;
+            color: var(--slate-gray);
+            grid-column: 2 / span 2;
+        }
+
+        .matrix-cell {
+            padding: 1.5rem;
+            border-radius: 6px;
+            color: #0f172a;
+        }
+
+        .cell-a { background-color: #e0f2fe; border: 2px solid #bae6fd; } /* 核心 */
+        .cell-b { background-color: #ffedd5; border: 2px solid #fed7aa; } /* 輔助 */
+        .cell-c { background-color: #f1f5f9; border: 2px solid #e2e8f0; } /* 暫時 */
+        .cell-d { background-color: #f3e8ff; border: 2px solid #e9d5ff; } /* 合作 */
+
+        .matrix-header {
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+            color: var(--primary-blue);
+        }
+
+        /* Comparison Section */
+        .comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .comp-box {
+            padding: 2rem;
+            border-radius: 8px;
+        }
+
+        .comp-myth {
+            background-color: #f8fafc;
+            border: 1px dashed #cbd5e1;
+        }
+
+        .comp-reality {
+            background-color: #fff7ed;
+            border: 1px solid #fed7aa;
+        }
+
+        /* Table Styling */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--border-color);
+        }
+
+        th, td {
+            padding: 1rem 1.5rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        th {
+            background-color: var(--primary-blue);
+            color: white;
+            font-weight: 600;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-blue);
+            color: #94a3b8;
+            padding: 3rem 2rem;
+            text-align: center;
+            font-size: 0.9rem;
+            border-top: 1px solid #334155;
+        }
+
+        footer a {
+            color: #f1f5f9;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Cite tag style */
+        .cite-tag {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            vertical-align: super;
+            margin-left: 2px;
+            font-weight: normal;
+        }
+
+        @media (max-width: 768px) {
+            .grid-2, .comparison, .matrix-container {
+                grid-template-columns: 1fr;
+            }
+            .matrix-container {
+                display: flex;
+                flex-direction: column;
+            }
+            .flow-branch {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>智慧物流與人機協作：重構現代供應鏈的未來藍圖<span class="cite-tag">[cite: 4]</span></h1>
+        <div class="subtitle">從演算法到心理安全感，企業級 AI 轉型實戰指南<span class="cite-tag">[cite: 4]</span></div>
+        <div class="meta">第九組：高丞駿 (5B433017) ＆ 朱烜毅 (5B433020)<span class="cite-tag">[cite: 4]</span></div>
+    </header>
+
+    <div class="container">
+        
+        <section id="pillars">
+            <h2 class="section-title">轉型三大核心柱石<span class="cite-tag">[cite: 4]</span></h2>
+            <div class="grid-3">
+                <div class="card card-accent">
+                    <h3>⚙️ 科技催化劑</h3>
+                    <p>實體自動化 (AMR) 與動態演算法 (ALNS) 的深度整合，打造具備即時反應能力的智慧物流大腦。<span class="cite-tag">[cite: 4]</span></p>
+                </div>
+                <div class="card card-accent">
+                    <h3>🛡️ 責任治理</h3>
+                    <p>建立透明化、去偏見的 AI 倫理護欄，確保演算法決策的長期永續與信任。<span class="cite-tag">[cite: 4]</span></p>
+                </div>
+                <div class="card card-accent">
+                    <h3>🤝 人機共生</h3>
+                    <p>跨越「AI 焦慮」，將靜態職位轉化為動態技能，釋放「人才速度 (Talent Velocity)」。<span class="cite-tag">[cite: 4]</span></p>
+                </div>
+            </div>
+        </section>
+
+        <section id="amr-technology">
+            <h2 class="section-title">自主移動機器人 (AMR) 技術特點與實績<span class="cite-tag">[cite: 4]</span></h2>
+            <div class="grid-2">
+                <div class="card card-blue">
+                    <h3>🤖 AMR 核心技術指標</h3>
+                    <ul>
+                        <li><strong>感知導航 (Dynamic Mapping):</strong> 搭載精密感測器與 AI 構圖，具備動態避障能力，完全無需傳統輸送帶的剛性軌道。<span class="cite-tag">[cite: 4]</span></li>
+                        <li><strong>精準庫存 (Inventory Accuracy):</strong> 即時庫存追蹤，有效消除缺貨或積壓盲區，降低人為誤差。<span class="cite-tag">[cite: 4]</span></li>
+                        <li><strong>全天候運作 (24/7 Continuity):</strong> 全天候作業能力，大幅攤提營運開支，實現從入庫到出庫的全流程無人化搬運。<span class="cite-tag">[cite: 4]</span></li>
+                    </ul>
+                </div>
+                <div class="card card-blue">
+                    <h3>📊 新竹物流專案轉型成效 (ROI)</h3>
+                    <p>全球訂單履行中心導入數萬台 AMR，重塑 3PL 包裹處理速度與揀貨精準度。<span class="cite-tag">[cite: 4]</span></p>
+                    <div class="stats-grid">
+                        <div class="stat-box">
+                            <div class="stat-value">448.8m</div>
+                            <div class="stat-label">異型環線交叉帶長度 (速度 2.5 m/s)</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-value">11,250 件</div>
+                            <div class="stat-label">每小時處理貨物量 (掃碼率 99.8%)</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-value">+20%</div>
+                            <div class="stat-label">空間利用率提升</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-value">+30%</div>
+                            <div class="stat-label">分揀效率提升</div>
+                        </div>
+                    </div>
+                    <div class="stat-box" style="margin-top: 1rem; background: #fff5f5;">
+                        <div class="stat-value" style="color: #c53030;">-40%</div>
+                        <div class="stat-label" style="font-weight: bold;">營運與人工成本大幅降低</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="algorithm-flow">
+            <h2 class="section-title">核心大腦：ALNS 演算法與異常決策機制<span class="cite-tag">[cite: 4]</span></h2>
+            <div class="grid-2">
+                <div class="card card-blue">
+                    <h3>🧠 ALNS 演算法邏輯</h3>
+                    <p>採用<strong>自適應大型鄰域搜索 (Adaptive Large Neighborhood Search)</strong> 演算法，針對 <strong>CEVRPTW</strong> (具時間窗之電動車路徑問題) 進行最佳化。<span class="cite-tag">[cite: 4]</span></p>
+                    <br>
+                    <p><strong>即時環境感知：</strong>整合 RML (Routing Markup Language) 數據標準，即時處理路況壅塞與電動車 (EV) 續航力限制。<span class="cite-tag">[cite: 4]</span></p>
+                    <br>
+                    <p><strong>動態決策：</strong>對比傳統靜態派車，ALNS 模型能根據即時交通數據，動態調整送貨順序，大幅減少能源消耗與時間窗違規。<span class="cite-tag">[cite: 4]</span></p>
+                </div>
+                
+                <div class="flowchart">
+                    <h3>🔄 異常調度事件流程 (Vehicle Failure)</h3>
+                    <div class="flow-step">
+                        <strong>1. 異常偵測：</strong> 系統即時捕捉車輛故障警報。<span class="cite-tag">[cite: 4]</span>
+                    </div>
+                    <div class="flow-step">
+                        <strong>2. 重新評估 (Dynamic Request Handler)：</strong> 演算法盤點未完成訂單，評估周邊車隊的剩餘載能與時間窗。<span class="cite-tag">[cite: 4]</span>
+                    </div>
+                    <div class="flow-step">
+                        <strong>3. 決策分歧評估：</strong>
+                        <div class="flow-branch">
+                            <div class="branch-box branch-yes">
+                                <strong>有餘裕：</strong> 即刻重新分配剩餘任務。<span class="cite-tag">[cite: 4]</span>
+                            </div>
+                            <div class="branch-box branch-no">
+                                <strong>超出負載：</strong> 觸發車場派出全新備援車輛，確保營運中斷時間趨近於零。<span class="cite-tag">[cite: 4]</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="myths-vs-reality">
+            <h2 class="section-title">思維轉型：自動化的神話與現實<span class="cite-tag">[cite: 4]</span></h2>
+            <div class="comparison">
+                <div class="comp-box comp-myth">
+                    <h3 style="color: #64748b;">❌ 機器取代人力 (The Myth)</h3>
+                    <p>傳統觀念認為自動化僅為削減人力。然而在傳統倉儲中，員工面臨高達 2.5 公尺儲位的高空作業風險與高強度勞力耗損。<span class="cite-tag">[cite: 4]</span></p>
+                </div>
+                <div class="comp-box comp-reality">
+                    <h3 style="color: var(--accent-orange);"> Ra 人機協作賦能 (The Reality)</h3>
+                    <p><strong>亞馬遜 Vulcan 機器人</strong>具備觸覺感知，自動處理重物與極端高低儲位，將員工從危險環境中解放，轉向專注於監控、決策與例外情境排除。<span class="cite-tag">[cite: 4]</span></p>
+                </div>
+            </div>
+            <div class="card card-accent" style="margin-top: 1.5rem; text-align: center; background: linear-gradient(to right, #fff7ed, #ffffff);">
+                <blockquote style="font-size: 1.2rem; font-style: italic; font-weight: bold; color: var(--accent-orange);">
+                    「自動化不是為了消除人力，而是為了提升人力的價值。」— 確保第一線作業安全性與人體工學。<span class="cite-tag">[cite: 4]</span>
+                </blockquote>
+            </div>
+        </section>
+
+        <section id="talent-matrix">
+            <h2 class="section-title">物流勞動力發展與人力四象限矩陣<span class="cite-tag">[cite: 4]</span></h2>
+            <p style="margin-bottom: 1.5rem;">目前高達 <strong>86% 的企業缺乏敏捷調度人才</strong>的「人才速度 (Talent Velocity)」。人資長正將組織重構為「任務導向 (Task-Oriented)」，使內部 AI 人才庫原地擴展 8.2 倍，流動性提升 22%。<span class="cite-tag">[cite: 4]</span></p>
+            
+            <div class="matrix-container">
+                <div></div>
+                <div class="matrix-label-x">價值性 (Value) → 高</div>
+                <div></div>
+                <div class="matrix-label-y">← 獨特性 (Uniqueness) 高</div>
+                
+                <div class="matrix-cell cell-d">
+                    <div class="matrix-header">D. 合作人力</div>
+                    <p>• 外部系統顧問<span class="cite-tag">[cite: 4]</span></p>
+                    <p>• AI 演算法供應商<span class="cite-tag">[cite: 4]</span></p>
+                </div>
+                <div class="matrix-cell cell-a">
+                    <div class="matrix-header">A. 核心人力</div>
+                    <p>• 機器人感知系統工程師 (感知演算法、避障規劃)<span class="cite-tag">[cite: 4]</span></p>
+                    <p>• 巨量資料分析師 (資料加值、雲端運算)<span class="cite-tag">[cite: 4]</span></p>
+                </div>
+                
+                <div class="matrix-cell cell-c">
+                    <div class="matrix-header">C. 暫時人力</div>
+                    <p>• 季節性基礎理貨員 (逐步由 AMR 替代)<span class="cite-tag">[cite: 4]</span></p>
+                </div>
+                <div class="matrix-cell cell-b">
+                    <div class="matrix-header">B. 輔助人力</div>
+                    <p>• 設備可靠性維修技術員 (馬達與感測器保養)<span class="cite-tag">[cite: 4]</span></p>
+                    <p>• 控制系統技術員 (PLC 程式調整)<span class="cite-tag">[cite: 4]</span></p>
+                </div>
+            </div>
+        </section>
+
+        <section id="governance-roles">
+            <h2 class="section-title">轉型落地：變革管理與角色分工<span class="cite-tag">[cite: 4]</span></h2>
+            <div style="background: white; padding: 2rem; border-radius: 8px; border: 1px solid var(--border-color); margin-bottom: 2rem;">
+                <h3>🧠 心理安全感 (Psychological Safety) 與轉型曲線</h3>
+                <p>員工面對海量新系統易產生<strong>變革疲勞 (Change Fatigue)</strong> 的精力耗盡。主管介入的關鍵在於承諾不因 AI 裁員，將 AI 定位為消除枯燥任務的工具，把溝通術語從「對此感到擔憂」轉化為「對此感到好奇」，重新開啟大腦的開放學習狀態。<span class="cite-tag">[cite: 4]</span></p>
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>維度</th>
+                        <th>人資單位 (HR) - 人才生態系統架構師<span class="cite-tag">[cite: 4]</span></th>
+                        <th>中高階主管 - 人機協作賦能者<span class="cite-tag">[cite: 4]</span></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>核心角色</strong></td>
+                        <td>環境與制度的設計者 (建造高速公路)<span class="cite-tag">[cite: 4]</span></td>
+                        <td>績效與文化的執行者 (賽道上的領航員)<span class="cite-tag">[cite: 4]</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>AI 任務</strong></td>
+                        <td>定義全公司通用的 AI 素養標準與技能標籤<span class="cite-tag">[cite: 4]</span></td>
+                        <td>決定工作流程中「機器產出」與「人類決策把關」的斷點<span class="cite-tag">[cite: 4]</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>心理賦能</strong></td>
+                        <td>建立轉職配套與制度安全感<span class="cite-tag">[cite: 4]</span></td>
+                        <td>在日常專案中化解恐懼，實施實戰教練 (OJT)<span class="cite-tag">[cite: 4]</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>衡量指標</strong></td>
+                        <td>降低招聘成本，縮小技能缺口<span class="cite-tag">[cite: 4]</span></td>
+                        <td>流程效率、員工敬業度、創新轉化率<span class="cite-tag">[cite: 4]</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="future-governance">
+            <h2 class="section-title">AI 責任治理與未來供應鏈願景<span class="cite-tag">[cite: 4]</span></h2>
+            <div class="grid-3">
+                <div class="card card-blue">
+                    <h3>⚖️ 避免演算法偏見</h3>
+                    <p>AI 模型可能基於歷史採購模式或地理位置，對特定供應商或客群產生歧視，必須建立人員介入機制 (Human-in-the-loop) 確保供應鏈公平性。<span class="cite-tag">[cite: 4]</span></p>
+                </div>
+                <div class="card card-blue">
+                    <h3>📦 破解黑盒子效應</h3>
+                    <p>開發使用者友善的介面與<strong>可解釋性的 AI 模型 (Explainability)</strong>，清楚呈現建議背後的邏輯路徑，提升管理層的究責能力與內部信任。<span class="cite-tag">[cite: 4]</span></p>
+                </div>
+                <div class="card card-blue">
+                    <h3>🔒 數據稽核與隱私</h3>
+                    <p>實施強大的測試與驗證程序，將龐大的供應商、員工與客戶數據進行匿名化與數據稽核 (Data Auditing)，於源頭消除資外洩風險。<span class="cite-tag">[cite: 4]</span></p>
+                </div>
+            </div>
+
+            <div class="card card-accent" style="margin-top: 2rem; background: var(--primary-blue); color: white;">
+                <h3 style="color: white; justify-content: center; font-size: 1.5rem;">🎯 結語：未來供應鏈的綜合底蘊</h3>
+                <p style="text-align: center; font-size: 1.1rem; margin-top: 1rem; color: #cbd5e1;">
+                    「未來供應鏈的競爭，不再是機器與機器的對決，而是<strong>『人機協作體系』</strong>的綜合底蘊。」<span class="cite-tag">[cite: 4]</span>
+                </p>
+                <p style="text-align: center; font-size: 0.9rem; margin-top: 0.5rem; color: #94a3b8;">
+                    透過科技驅動效率 (AMR+ALNS)、人類主導創新 (同理心與戰略決策) 以及倫理確保永續，重構現代供應鏈的未來藍圖。<span class="cite-tag">[cite: 4]</span>
+                </p>
+            </div>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>人機協作與物流勞動力發展 - 第九組 專題簡報成果展示<span class="cite-tag">[cite: 4]</span></p>
+        <p style="margin-top: 0.5rem; font-size: 0.8rem;">參考網站：<a href="https://black-rakel-57.tiiny.site/" target="_blank">black-rakel-57.tiiny.site</a><span class="cite-tag">[cite: 3, 5]</span></p>
+    </footer>
+
+</body>
+</html>
